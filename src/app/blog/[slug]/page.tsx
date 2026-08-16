@@ -21,7 +21,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getBlogPosts().find((p) => p.slug === slug);
   if (!post) return {};
-  return { title: `${post.seoTitle} | Always ENOUGH™`, description: post.metaDescription };
+  const title = `${post.seoTitle} | Always ENOUGH™`;
+  return {
+    title,
+    description: post.metaDescription,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title,
+      description: post.metaDescription,
+      url: `/blog/${post.slug}`,
+    },
+    twitter: { title, description: post.metaDescription },
+  };
 }
 
 export default async function BlogPostPage({
@@ -33,8 +45,25 @@ export default async function BlogPostPage({
   const post = getBlogPosts().find((p) => p.slug === slug);
   if (!post) notFound();
 
+  // BlogPosting structured data, invisible to visitors, read by search/AI answer engines — no
+  // datePublished included since no real publish date exists in the source data, and inventing
+  // one would violate PROMISE.md's "be truthful" rule.
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.metaDescription,
+    url: `https://alwaysenoughmethod.com/blog/${post.slug}`,
+    author: { "@id": "https://alwaysenoughmethod.com/#vaida" },
+    publisher: { "@id": "https://alwaysenoughmethod.com/#organization" },
+  };
+
   return (
     <main className="px-6 py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <article className="mx-auto max-w-2xl">
         <h1 className="font-display mb-8 text-4xl text-forest">{post.title}</h1>
         <Prose blocks={post.bodyBlocks} className="text-lg text-ink" />

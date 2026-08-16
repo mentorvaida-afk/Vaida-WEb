@@ -6,10 +6,16 @@ import { Prose } from "@/components/Prose";
 import { PullQuote } from "@/components/PullQuote";
 import { BookingCallout } from "@/components/BookingCallout";
 
+const TITLE = "The Always ENOUGH™ Emotional & Financial Reset";
+const DESCRIPTION =
+  "A six-week, one-to-one programme to rebuild the inner steadiness that makes financial clarity possible. £2,000, or two payments of £1,050.";
+
 export const metadata: Metadata = {
-  title: "The Always ENOUGH™ Emotional & Financial Reset",
-  description:
-    "A six-week, one-to-one programme to rebuild the inner steadiness that makes financial clarity possible. £2,000, or two payments of £1,050.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/the-reset" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/the-reset" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 // Copy sourced verbatim from content/pages/the-reset.md — see docs/PAGE_BLUEPRINTS.md, section 4,
@@ -69,7 +75,8 @@ export default function TheResetPage() {
               alt="Vaida V. Stone"
               fill
               priority
-              sizes="(min-width: 768px) 40vw, 90vw"
+              quality={100}
+              sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
               className="object-cover object-right"
             />
           </div>

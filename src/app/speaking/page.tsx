@@ -6,10 +6,16 @@ import { Prose } from "@/components/Prose";
 import { Card } from "@/components/Card";
 import { SpeakingEnquiryForm } from "@/components/SpeakingEnquiryForm";
 
+const TITLE = "Speaking | Always ENOUGH™";
+const DESCRIPTION =
+  "Keynotes, workshops, and training on emotional and financial confidence, for corporate, HR, financial services, and women's empowerment audiences.";
+
 export const metadata: Metadata = {
-  title: "Speaking | Always ENOUGH™",
-  description:
-    "Keynotes, workshops, and training on emotional and financial confidence, for corporate, HR, financial services, and women's empowerment audiences.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/speaking" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/speaking" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 const AUDIENCE_MARKERS = [
@@ -100,7 +106,8 @@ export default function SpeakingPage() {
               alt="Vaida V. Stone"
               fill
               priority
-              sizes="(min-width: 768px) 40vw, 90vw"
+              quality={100}
+              sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
               className="object-cover object-right"
             />
           </div>
@@ -128,7 +135,8 @@ export default function SpeakingPage() {
                       alt={image.alt}
                       width={image.width}
                       height={image.height}
-                      sizes="(min-width: 768px) 50vw, 100vw"
+                      quality={100}
+                      sizes="(min-width: 1024px) 440px, (min-width: 768px) 50vw, 100vw"
                       className="h-auto w-full"
                     />
                   )}

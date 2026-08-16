@@ -11,7 +11,7 @@ It is a conversion and authority platform with two jobs, in this order:
 
 1. Make a visitor feel, within seconds, that this is a real leader with lived authority — not a
    generic coach site.
-2. Move the right visitor towards one of two doors: **book a Money Clarity Call**, or
+2. Move the right visitor towards one of two doors: **book a Clarity Call**, or
    **download the free workbook / join the list**.
 
 Everything technical in this repository exists to serve those two jobs. If a technical decision

@@ -1,9 +1,13 @@
 // SendPulse API client — the email provider Vaida chose, see docs/BUILD_LOG.md (Gate 1).
 // Requires SENDPULSE_CLIENT_ID and SENDPULSE_CLIENT_SECRET in the environment (never in this
-// repository, see .env.example and docs/ENGINEERING_RULES.md). Without them, every function
-// here throws rather than silently pretending to succeed — callers must handle that as a
-// graceful degradation case (see docs/ATTACK_ANALYSIS.md: "booking/capture should fail
-// gracefully with a clear fallback").
+// repository, see .env.example and docs/ENGINEERING_RULES.md). Confirmed by testing directly
+// against api.sendpulse.com that the static "API key" (Account settings > API > API keys) is
+// rejected by these endpoints with 401 "Client authentication failed" — /smtp/emails and
+// /addressbooks only accept a token from the OAuth client_credentials exchange below, using the
+// Client ID/Secret pair (Account settings > API > Client credentials), matching every official
+// SendPulse SDK (Node/PHP/Python/Ruby). Without them, every function here throws rather than
+// silently pretending to succeed — callers must handle that as a graceful degradation case (see
+// docs/ATTACK_ANALYSIS.md: "booking/capture should fail gracefully with a clear fallback").
 
 const TOKEN_URL = "https://api.sendpulse.com/oauth/access_token";
 const API_BASE = "https://api.sendpulse.com";
@@ -85,7 +89,7 @@ export async function sendNotificationEmail(params: {
       email: {
         html: Buffer.from(params.html).toString("base64"),
         subject: params.subject,
-        from: { name: "Always ENOUGH™ website", email: "noreply@alwaysenoughmethod.com" },
+        from: { name: "Always ENOUGH™ website", email: "hello@alwaysenoughmethod.com" },
         to: [{ email: params.to }],
       },
     }),

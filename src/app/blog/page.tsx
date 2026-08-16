@@ -5,9 +5,15 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { Card } from "@/components/Card";
 import { EmailCaptureForm } from "@/components/EmailCaptureForm";
 
+const TITLE = "Blog & Resources | Always ENOUGH™";
+const DESCRIPTION = "Free downloadable resources and articles on money, confidence, and navigating change.";
+
 export const metadata: Metadata = {
-  title: "Blog & Resources | Always ENOUGH™",
-  description: "Free downloadable resources and articles on money, confidence, and navigating change.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/blog" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/blog" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 type Resource = { name: string; description: string };

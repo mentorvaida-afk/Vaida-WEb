@@ -5,10 +5,16 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { Prose } from "@/components/Prose";
 import { BookingCallout } from "@/components/BookingCallout";
 
+const TITLE = "About Vaida V. Stone | Always ENOUGH™";
+const DESCRIPTION =
+  "31 years designing behavioural change, an immigrant story rebuilt from nothing, and the founder of the Always ENOUGH™ Method.";
+
 export const metadata: Metadata = {
-  title: "About Vaida V. Stone | Always ENOUGH™",
-  description:
-    "31 years designing behavioural change, an immigrant story rebuilt from nothing, and the founder of the Always ENOUGH™ Method.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/about" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/about" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 // Copy sourced from content/pages/about.md. NOTE: that file is an AI-generated summary, not
@@ -39,7 +45,8 @@ export default function AboutPage() {
             width={1086}
             height={1392}
             priority
-            sizes="(min-width: 768px) 40vw, 90vw"
+            quality={100}
+            sizes="(min-width: 1024px) 440px, (min-width: 768px) 45vw, 90vw"
             className="h-auto w-full rounded-sm"
           />
         </div>
@@ -56,7 +63,8 @@ export default function AboutPage() {
             alt="Vaida V. Stone, credentials and professional background"
             width={1363}
             height={1792}
-            sizes="(min-width: 768px) 40vw, 90vw"
+            quality={100}
+            sizes="(min-width: 1024px) 440px, (min-width: 768px) 45vw, 90vw"
             className="h-auto w-full rounded-sm md:order-2"
           />
           <div className="md:order-1">

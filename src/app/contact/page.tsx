@@ -4,9 +4,15 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { BookingCallout } from "@/components/BookingCallout";
 import { GeneralEnquiryForm } from "@/components/GeneralEnquiryForm";
 
+const TITLE = "Contact | Always ENOUGH™";
+const DESCRIPTION = "Book a Clarity Call, ask a question, or get in touch about a speaking engagement.";
+
 export const metadata: Metadata = {
-  title: "Contact | Always ENOUGH™",
-  description: "Book a Clarity Call, ask a question, or get in touch about a speaking engagement.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/contact" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/contact" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 // Copy sourced from content/pages/contact.md (retrieved as a summary, not verbatim — see

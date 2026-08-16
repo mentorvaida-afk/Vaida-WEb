@@ -7,10 +7,16 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { Prose } from "@/components/Prose";
 import { BookingCallout } from "@/components/BookingCallout";
 
+const TITLE = "Always ENOUGH™ | Vaida V. Stone";
+const DESCRIPTION =
+  "Helping women 40+ build financial and emotional confidence, with Vaida V. Stone, creator of the Always ENOUGH™ Method.";
+
 export const metadata: Metadata = {
-  title: "Always ENOUGH™ | Vaida V. Stone",
-  description:
-    "Helping women 40+ build financial and emotional confidence, with Vaida V. Stone, creator of the Always ENOUGH™ Method.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 // Copy sourced from content/pages/homepage.md — see docs/PAGE_BLUEPRINTS.md, section 1, for
@@ -44,7 +50,8 @@ export default function HomePage() {
               alt="Vaida V. Stone"
               fill
               priority
-              sizes="(min-width: 768px) 40vw, 90vw"
+              quality={100}
+              sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
               className="object-cover object-right"
             />
           </div>

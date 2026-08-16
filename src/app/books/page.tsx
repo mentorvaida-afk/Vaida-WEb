@@ -8,10 +8,16 @@ import { PullQuote } from "@/components/PullQuote";
 import { Button } from "@/components/Button";
 import { EmailCaptureForm } from "@/components/EmailCaptureForm";
 
+const TITLE = "Books | Always ENOUGH™";
+const DESCRIPTION =
+  "Always Enough, an Amazon #1 bestseller, and The Power Of Enough, Vaida V. Stone's second book, coming in 2026.";
+
 export const metadata: Metadata = {
-  title: "Books | Always ENOUGH™",
-  description:
-    "Always Enough, an Amazon #1 bestseller, and The Power Of Enough, Vaida V. Stone's second book, coming in 2026.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/books" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/books" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 const AMAZON_URL = "https://amzn.eu/d/08Ghp2d9";
@@ -56,7 +62,8 @@ export default function BooksPage() {
               alt="Vaida V. Stone holding a physical copy of her book, Always Enough, cover visible."
               width={1457}
               height={1792}
-              sizes="(min-width: 768px) 40vw, 90vw"
+              quality={100}
+              sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
               className="h-auto w-full rounded-sm"
             />
             <div>
@@ -89,7 +96,8 @@ export default function BooksPage() {
             alt="Vaida V. Stone holding an open copy of The Power Of Enough, its title facing the reader."
             width={1080}
             height={1787}
-            sizes="(min-width: 768px) 40vw, 90vw"
+            quality={100}
+            sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
             className="h-auto w-full rounded-sm"
           />
           <div>

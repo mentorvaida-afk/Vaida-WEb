@@ -5,6 +5,7 @@ import { Prose } from "@/components/Prose";
 export const metadata: Metadata = {
   title: "Privacy Policy | Always ENOUGH™",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/privacy-policy" },
 };
 
 // DRAFT ONLY — see content/pages/privacy-policy.md and docs/BUILD_LOG.md. This page is

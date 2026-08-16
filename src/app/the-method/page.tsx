@@ -5,10 +5,16 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { Prose } from "@/components/Prose";
 import { BookingCallout } from "@/components/BookingCallout";
 
+const TITLE = "The Method | Always ENOUGH™";
+const DESCRIPTION =
+  "The Always E.N.O.U.G.H.™ Flower: six steps, mind, heart and money working together rather than separately.";
+
 export const metadata: Metadata = {
-  title: "The Method | Always ENOUGH™",
-  description:
-    "The Always E.N.O.U.G.H.™ Flower: six steps, mind, heart and money working together rather than separately.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/the-method" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/the-method" },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 // Every petal line in content/pages/the-method.md follows "Letter — Name. Tagline. Description."
@@ -64,7 +70,8 @@ export default function TheMethodPage() {
             alt="Vaida V. Stone with the Money Tree, the Always ENOUGH™ Method's grounding metaphor"
             width={1152}
             height={2048}
-            sizes="(min-width: 768px) 40vw, 90vw"
+            quality={100}
+            sizes="(min-width: 1024px) 440px, (min-width: 768px) 45vw, 90vw"
             className="h-auto w-full rounded-sm"
           />
         </div>
