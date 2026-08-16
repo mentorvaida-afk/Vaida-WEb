@@ -23,30 +23,31 @@ export default function HomePage() {
 
   return (
     <main>
-      <section className="relative flex min-h-[480px] items-center overflow-hidden bg-forest px-6 py-24 text-pearl md:min-h-[640px] md:py-32">
-        <Image
-          src="/photos/vaida-home-hero.jpg"
-          alt="Vaida V. Stone"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[right_center]"
-        />
-        {/* Dark scrim over the photo so the pearl text keeps its contrast, per
-            docs/ENGINEERING_RULES.md's readable-contrast rule. Native file is 3120×1200.
-            object-cover + object-[right_center]: crops from the left (empty/green space in
-            the source) as the section's rendered aspect ratio changes, keeping the right side
-            of the photo anchored in frame so it never overlaps the text column on the left. */}
-        <div className="absolute inset-0 bg-forest-deep/40" aria-hidden="true" />
-        <div className="relative mx-auto max-w-2xl">
-          <Eyebrow tone="gold">Financial &amp; Emotional Wellbeing</Eyebrow>
-          <h1 className="font-display mt-6 mb-8 text-4xl italic leading-tight md:text-5xl">
-            Your confidence did not disappear.
-          </h1>
-          <Prose blocks={hero} className="mb-10 max-w-xl text-lg text-pearl/90" />
-          <Button href="https://calendly.com/vaidastone" variant="primary">
-            Book a Clarity Call
-          </Button>
+      <section className="bg-forest px-6 py-24 text-pearl md:py-32">
+        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2 md:items-center">
+          <div>
+            <Eyebrow tone="gold">Financial &amp; Emotional Wellbeing</Eyebrow>
+            <h1 className="font-display mt-6 mb-8 text-4xl italic leading-tight md:text-5xl">
+              Your confidence did not disappear.
+            </h1>
+            <Prose blocks={hero} className="mb-10 max-w-xl text-lg text-pearl/90" />
+            <Button href="https://calendly.com/vaidastone" variant="primary">
+              Book a Clarity Call
+            </Button>
+          </div>
+          {/* A dedicated, fixed-aspect box for the photo, separate from the text column, so
+              the two can never overlap at any viewport width. Native file is 3120×1200, mostly
+              empty background either side of Vaida; object-right crops in to just her. */}
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
+            <Image
+              src="/photos/vaida-home-hero.jpg"
+              alt="Vaida V. Stone"
+              fill
+              priority
+              sizes="(min-width: 768px) 40vw, 90vw"
+              className="object-cover object-right"
+            />
+          </div>
         </div>
       </section>
 

@@ -7,7 +7,7 @@ status: "Vaida's approved final copy, pulled verbatim. Confirm no further edits 
 
 Your confidence did not disappear. It was never given a place to be rebuilt.
 
-I help women find their inner bravery again, the kind that stands for itself. Not with theory, but with a clear map: practical tools and skills for money, confidence and the modern world, built to guide you from where you are now to where you actually want to be.
+I help women find their inner courage again, the kind that stands for itself. Not with theory, but with a clear map: practical tools and skills for money, confidence and the modern world, built to guide you from where you are now to where you actually want to be.
 
 [Book a Clarity Call]
 

@@ -50,25 +50,29 @@ export default function TheResetPage() {
 
   return (
     <main>
-      <section className="relative flex min-h-[560px] items-center overflow-hidden bg-forest px-6 py-24 text-pearl md:min-h-[640px]">
-        <Image
-          src="/photos/vaida-reset-opening.jpg"
-          alt="Vaida V. Stone"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[right_center]"
-        />
-        {/* Same treatment as the Home hero: native file is 3600×1200, object-cover +
-            object-[right_center] crops from the left as rendered width changes, dark scrim
-            keeps the pearl text readable. See src/app/page.tsx for the matching pattern. */}
-        <div className="absolute inset-0 bg-forest-deep/40" aria-hidden="true" />
-        <div className="relative mx-auto max-w-2xl">
-          <Eyebrow tone="gold">The Always ENOUGH™ Reset</Eyebrow>
-          <h1 className="font-display mt-4 mb-8 text-4xl italic md:text-5xl">
-            You already know something needs to change.
-          </h1>
-          <Prose blocks={opening} className="max-w-xl text-lg text-pearl/90" />
+      <section className="bg-forest px-6 py-24 text-pearl md:py-28">
+        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2 md:items-center">
+          <div>
+            <Eyebrow tone="gold">The Always ENOUGH™ Reset</Eyebrow>
+            <h1 className="font-display mt-4 mb-8 text-4xl italic md:text-5xl">
+              You already know something needs to change.
+            </h1>
+            <Prose blocks={opening} className="max-w-xl text-lg text-pearl/90" />
+          </div>
+          {/* Same treatment as the Home hero: a dedicated, fixed-aspect box for the photo,
+              separate from the text column, so the two can never overlap at any viewport
+              width. Native file is 3600×1200, mostly empty background either side of Vaida;
+              object-right crops in to just her. See src/app/page.tsx for the matching pattern. */}
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
+            <Image
+              src="/photos/vaida-reset-opening.jpg"
+              alt="Vaida V. Stone"
+              fill
+              priority
+              sizes="(min-width: 768px) 40vw, 90vw"
+              className="object-cover object-right"
+            />
+          </div>
         </div>
       </section>
 

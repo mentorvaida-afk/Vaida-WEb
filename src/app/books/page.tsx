@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Always Enough, an Amazon #1 bestseller, and The Power Of Enough, Vaida V. Stone's second book, coming in 2026.",
 };
 
-const AMAZON_URL = "https://www.amazon.co.uk/dp/PLACEHOLDER"; // NEEDS VAIDA: real Amazon link, see docs/BUILD_LOG.md
+const AMAZON_URL = "https://amzn.eu/d/08Ghp2d9";
 
 // Copy sourced verbatim from content/pages/books.md — see docs/PAGE_BLUEPRINTS.md, section 6.
 export default function BooksPage() {
