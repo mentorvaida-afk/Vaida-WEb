@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.eol": "\n",
+  "cSpell.language": "en-GB",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

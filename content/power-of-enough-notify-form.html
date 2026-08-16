@@ -1,0 +1,249 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #2E4612;
+    --forest-soft: #3d5c1a;
+    --gold: #C4A958;
+    --gold-soft: #d9c284;
+    --pearl: #F7F4ED;
+    --white: #FFFFFF;
+    --ink: #2A2A24;
+    --line: #E3DED0;
+  }
+
+  .poe-wrap * { box-sizing: border-box; }
+
+  .poe-wrap {
+    font-family: 'Jost', sans-serif;
+    color: var(--pearl);
+    background: linear-gradient(135deg, var(--forest) 0%, #24380e 100%);
+    padding: 64px 24px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .poe-wrap::before {
+    content: "";
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    border: 1px solid rgba(196, 169, 88, 0.25);
+    border-radius: 50%;
+  }
+
+  .poe-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 220px; height: 220px;
+    border: 1px solid rgba(196, 169, 88, 0.15);
+    border-radius: 50%;
+  }
+
+  .poe-card {
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .poe-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 0 0 20px;
+  }
+
+  .poe-fragments {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.9;
+    color: rgba(247, 244, 237, 0.75);
+    margin: 0 0 28px;
+  }
+
+  .poe-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--pearl);
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+
+  .poe-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold-soft);
+    margin: 0 0 28px;
+  }
+
+  .poe-body {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: rgba(247, 244, 237, 0.88);
+    max-width: 46ch;
+    margin: 0 auto 36px;
+  }
+
+  .poe-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 32px;
+  }
+
+  .poe-form {
+    display: flex;
+    gap: 10px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .poe-form.aef-hide { display: none; }
+
+  .poe-input {
+    flex: 1;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--pearl);
+    border: 1px solid transparent;
+    border-radius: 1px;
+    padding: 14px 16px;
+  }
+
+  .poe-input:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  .poe-submit {
+    background: var(--gold);
+    color: var(--forest);
+    border: none;
+    padding: 14px 24px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 1px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.18s ease;
+  }
+
+  .poe-submit:hover { background: var(--gold-soft); }
+
+  .poe-footnote {
+    font-size: 12.5px;
+    color: rgba(247, 244, 237, 0.55);
+    margin-top: 16px;
+  }
+
+  .poe-success {
+    display: none;
+  }
+
+  .poe-success.aef-show { display: block; }
+
+  .poe-success-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 20px;
+  }
+
+  .poe-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--pearl);
+    margin: 0 0 8px;
+  }
+
+  .poe-success p {
+    font-size: 14.5px;
+    color: rgba(247, 244, 237, 0.8);
+    line-height: 1.6;
+    max-width: 40ch;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 560px) {
+    .poe-wrap { padding: 48px 20px; }
+    .poe-title { font-size: 32px; }
+    .poe-fragments { font-size: 16px; }
+    .poe-form { flex-direction: column; }
+    .poe-submit { width: 100%; }
+  }
+</style>
+
+<div class="poe-wrap">
+  <div class="poe-card">
+
+    <p class="poe-eyebrow">Coming in 2026</p>
+
+    <p class="poe-fragments">
+      A frozen bucket of water in a dark kitchen.<br>
+      A pair of borrowed boots, chosen for how they looked.<br>
+      A stolen apple, and a grandmother's wisdom.<br>
+      A £25 gift card, and a silence louder than any words.
+    </p>
+
+    <h2 class="poe-title">The Power Of Enough</h2>
+    <p class="poe-subtitle">Why More Will Never Be Enough Until You Feel Enough Within</p>
+
+    <div class="poe-divider"></div>
+
+    <p class="poe-body">
+      These are not the whole story. They are the beginning of it. Vaida's second book asks a harder question than her first, not why we don't have enough, but why so many capable women never quite feel it. Be the first to know when it's ready.
+    </p>
+
+    <form class="poe-form" id="poeForm">
+      <input type="email" class="poe-input" id="poeEmail" placeholder="Your email address" required>
+      <button type="submit" class="poe-submit">Notify Me</button>
+    </form>
+    <p class="poe-footnote">No spam, just one email, the moment it's real.</p>
+
+    <div class="poe-success" id="poeSuccess">
+      <div class="poe-success-mark">&#10003;</div>
+      <h3>You're on the list.</h3>
+      <p>You'll be the first to know the moment The Power Of Enough is ready.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    const form = document.getElementById('poeForm');
+    const success = document.getElementById('poeSuccess');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('poeEmail').value.trim();
+      if (!email) return;
+      // In production, this connects to the site's email capture tool (e.g. SendPulse, Mailchimp, or Elementor Forms with a list integration).
+      form.classList.add('aef-hide');
+      document.querySelector('.poe-footnote').style.display = 'none';
+      success.classList.add('aef-show');
+    });
+  })();
+</script>

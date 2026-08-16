@@ -1,0 +1,238 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #2E4612;
+    --forest-soft: #3d5c1a;
+    --gold: #C4A958;
+    --gold-soft: #d9c284;
+    --pearl: #F7F4ED;
+    --white: #FFFFFF;
+    --ink: #2A2A24;
+    --line: #E3DED0;
+  }
+
+  .gcf-wrap * { box-sizing: border-box; }
+
+  .gcf-wrap {
+    font-family: 'Jost', sans-serif;
+    color: var(--ink);
+    background: var(--pearl);
+    padding: 48px 24px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .gcf-card {
+    width: 100%;
+    max-width: 520px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 44px 40px;
+    position: relative;
+  }
+
+  .gcf-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--forest), var(--gold));
+  }
+
+  .gcf-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+
+  .gcf-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--forest);
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  .gcf-sub {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #56564d;
+    margin: 0 0 30px;
+    max-width: 44ch;
+  }
+
+  .gcf-field { margin-bottom: 18px; }
+
+  .gcf-field label {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--forest);
+    margin-bottom: 7px;
+    font-weight: 500;
+  }
+
+  .gcf-field .gcf-optional {
+    color: #9a9587;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .gcf-field input,
+  .gcf-field textarea {
+    width: 100%;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--pearl);
+    border: 1px solid var(--line);
+    border-radius: 1px;
+    padding: 12px 14px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .gcf-field textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.5;
+  }
+
+  .gcf-field input:focus,
+  .gcf-field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  .gcf-submit {
+    width: 100%;
+    margin-top: 6px;
+    background: var(--forest);
+    color: var(--white);
+    border: none;
+    padding: 15px 24px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background 0.18s ease;
+  }
+
+  .gcf-submit:hover { background: var(--forest-soft); }
+
+  .gcf-footnote {
+    text-align: center;
+    font-size: 12.5px;
+    color: #9a9587;
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  .gcf-required { color: var(--gold); }
+
+  .gcf-success {
+    display: none;
+    text-align: center;
+    padding: 20px 0 6px;
+  }
+
+  .gcf-success.gcf-show { display: block; }
+  .gcf-form.gcf-hide { display: none; }
+
+  .gcf-success-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 20px;
+  }
+
+  .gcf-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    color: var(--forest);
+    margin: 0 0 8px;
+  }
+
+  .gcf-success p {
+    font-size: 14.5px;
+    color: #56564d;
+    line-height: 1.6;
+    max-width: 38ch;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 560px) {
+    .gcf-wrap { padding: 24px 16px; }
+    .gcf-card { padding: 32px 24px; }
+    .gcf-title { font-size: 25px; }
+  }
+</style>
+
+<div class="gcf-wrap">
+  <div class="gcf-card">
+
+    <p class="gcf-eyebrow">Just Curious?</p>
+    <h2 class="gcf-title">Ask me anything first.</h2>
+    <p class="gcf-sub">No pressure, no obligation. If you're wondering whether this is right for you, just ask, I read every message personally.</p>
+
+    <form class="gcf-form" id="gcfForm">
+
+      <div class="gcf-field">
+        <label for="gcfName">First name <span class="gcf-required">*</span></label>
+        <input type="text" id="gcfName" name="name" required autocomplete="given-name">
+      </div>
+
+      <div class="gcf-field">
+        <label for="gcfEmail">Email <span class="gcf-required">*</span></label>
+        <input type="email" id="gcfEmail" name="email" required autocomplete="email">
+      </div>
+
+      <div class="gcf-field">
+        <label for="gcfMessage">What's on your mind? <span class="gcf-required">*</span></label>
+        <textarea id="gcfMessage" name="message" required placeholder="Ask whatever's on your mind, no question is too small."></textarea>
+      </div>
+
+      <button type="submit" class="gcf-submit">Send My Question</button>
+      <p class="gcf-footnote">I usually reply within 2&ndash;3 working days.</p>
+
+    </form>
+
+    <div class="gcf-success" id="gcfSuccess">
+      <div class="gcf-success-mark">&#10003;</div>
+      <h3>Got it, thank you.</h3>
+      <p>Your question has been sent. I'll get back to you personally within 2&ndash;3 working days.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    const form = document.getElementById('gcfForm');
+    const success = document.getElementById('gcfSuccess');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // In production, this connects to the site's form handler (Elementor Forms / WPForms), sending to hello@alwaysenoughmethod.com
+      form.classList.add('gcf-hide');
+      success.classList.add('gcf-show');
+    });
+  })();
+</script>

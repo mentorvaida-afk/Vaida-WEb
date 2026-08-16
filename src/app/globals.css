@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand fonts loaded via next/font in layout.tsx and exposed as CSS variables
+   --font-cormorant and --font-jost — see docs/BRAND_CONTEXT.md for token rules. */
+
+body {
+  @apply bg-pearl text-forest font-body;
+}

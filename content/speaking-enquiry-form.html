@@ -1,0 +1,398 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #2E4612;
+    --forest-soft: #3d5c1a;
+    --gold: #C4A958;
+    --gold-soft: #d9c284;
+    --pearl: #F7F4ED;
+    --white: #FFFFFF;
+    --ink: #2A2A24;
+    --line: #E3DED0;
+    --error: #A33B2B;
+  }
+
+  .aef-wrap * { box-sizing: border-box; }
+
+  .aef-wrap {
+    font-family: 'Jost', sans-serif;
+    color: var(--ink);
+    background: var(--pearl);
+    padding: 48px 24px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .aef-card {
+    width: 100%;
+    max-width: 640px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 56px 48px;
+    position: relative;
+  }
+
+  .aef-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--forest), var(--gold));
+  }
+
+  .aef-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin: 0 0 14px;
+  }
+
+  .aef-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--forest);
+    line-height: 1.15;
+    margin: 0 0 12px;
+  }
+
+  .aef-sub {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: #56564d;
+    margin: 0 0 36px;
+    max-width: 50ch;
+  }
+
+  .aef-section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--forest);
+    margin: 36px 0 18px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+
+  .aef-section-label:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .aef-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .aef-field { margin-bottom: 20px; }
+
+  .aef-field label {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--forest);
+    margin-bottom: 7px;
+    font-weight: 500;
+  }
+
+  .aef-field .aef-optional {
+    color: #9a9587;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .aef-field input,
+  .aef-field select,
+  .aef-field textarea {
+    width: 100%;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--pearl);
+    border: 1px solid var(--line);
+    border-radius: 1px;
+    padding: 12px 14px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .aef-field textarea {
+    resize: vertical;
+    min-height: 96px;
+    line-height: 1.5;
+  }
+
+  .aef-field input:focus,
+  .aef-field select:focus,
+  .aef-field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  .aef-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1L7 7L13 1' stroke='%232E4612' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  .aef-hint {
+    font-size: 12.5px;
+    color: #8c8a7f;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .aef-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .aef-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13.5px;
+    padding: 9px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    cursor: pointer;
+    background: var(--pearl);
+    color: var(--ink);
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+
+  .aef-chip input { display: none; }
+
+  .aef-chip.aef-checked {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--white);
+  }
+
+  .aef-submit {
+    width: 100%;
+    margin-top: 12px;
+    background: var(--forest);
+    color: var(--white);
+    border: none;
+    padding: 16px 24px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background 0.18s ease;
+  }
+
+  .aef-submit:hover { background: var(--forest-soft); }
+
+  .aef-footnote {
+    text-align: center;
+    font-size: 12.5px;
+    color: #9a9587;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  .aef-required { color: var(--gold); }
+
+  .aef-success {
+    display: none;
+    text-align: center;
+    padding: 24px 0 8px;
+  }
+
+  .aef-success.aef-show { display: block; }
+  .aef-form.aef-hide { display: none; }
+
+  .aef-success-mark {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 22px;
+  }
+
+  .aef-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--forest);
+    margin: 0 0 10px;
+  }
+
+  .aef-success p {
+    font-size: 15px;
+    color: #56564d;
+    line-height: 1.6;
+    max-width: 42ch;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 560px) {
+    .aef-wrap { padding: 24px 16px; }
+    .aef-card { padding: 36px 24px; }
+    .aef-row { grid-template-columns: 1fr; gap: 0; }
+    .aef-title { font-size: 29px; }
+  }
+</style>
+
+<div class="aef-wrap">
+  <div class="aef-card">
+
+    <p class="aef-eyebrow">Speaking Enquiry</p>
+    <h2 class="aef-title">Bring this conversation<br>into your room.</h2>
+    <p class="aef-sub">Tell me a little about your event, and I'll come back to you with availability and options suited to your audience.</p>
+
+    <form class="aef-form" id="aefForm">
+
+      <p class="aef-section-label">About you</p>
+
+      <div class="aef-row">
+        <div class="aef-field">
+          <label for="aefName">Full name <span class="aef-required">*</span></label>
+          <input type="text" id="aefName" name="name" required autocomplete="name">
+        </div>
+        <div class="aef-field">
+          <label for="aefOrg">Organisation <span class="aef-optional">(if applicable)</span></label>
+          <input type="text" id="aefOrg" name="organisation" autocomplete="organization">
+        </div>
+      </div>
+
+      <div class="aef-row">
+        <div class="aef-field">
+          <label for="aefEmail">Email <span class="aef-required">*</span></label>
+          <input type="email" id="aefEmail" name="email" required autocomplete="email">
+        </div>
+        <div class="aef-field">
+          <label for="aefPhone">Phone <span class="aef-optional">(optional)</span></label>
+          <input type="tel" id="aefPhone" name="phone" autocomplete="tel">
+        </div>
+      </div>
+
+      <p class="aef-section-label">About your event</p>
+
+      <div class="aef-field">
+        <label>Who is this for? <span class="aef-required">*</span></label>
+        <div class="aef-checkbox-group" id="aefAudienceGroup">
+          <label class="aef-chip"><input type="checkbox" name="audience" value="Corporate & HR"><span>Corporate &amp; HR</span></label>
+          <label class="aef-chip"><input type="checkbox" name="audience" value="AI Confidence Training"><span>AI Confidence Training</span></label>
+          <label class="aef-chip"><input type="checkbox" name="audience" value="Women's Empowerment & Midlife Events"><span>Women's Empowerment &amp; Midlife</span></label>
+          <label class="aef-chip"><input type="checkbox" name="audience" value="Financial Services & Advisers"><span>Financial Services &amp; Advisers</span></label>
+          <label class="aef-chip"><input type="checkbox" name="audience" value="Other"><span>Other</span></label>
+        </div>
+      </div>
+
+      <div class="aef-row">
+        <div class="aef-field">
+          <label for="aefFormat">Preferred format <span class="aef-required">*</span></label>
+          <select id="aefFormat" name="format" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Keynote address</option>
+            <option>Half-day workshop</option>
+            <option>Full-day workshop</option>
+            <option>Seminar</option>
+            <option>One-to-one / small group</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="aef-field">
+          <label for="aefDelivery">In person or online? <span class="aef-required">*</span></label>
+          <select id="aefDelivery" name="delivery" required>
+            <option value="" disabled selected>Select one</option>
+            <option>In person</option>
+            <option>Online</option>
+            <option>Either works</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="aef-row">
+        <div class="aef-field">
+          <label for="aefSize">Approximate audience size</label>
+          <input type="text" id="aefSize" name="audienceSize" placeholder="e.g. 25, 150, not yet known">
+        </div>
+        <div class="aef-field">
+          <label for="aefDate">Event date <span class="aef-optional">(or timeframe)</span></label>
+          <input type="text" id="aefDate" name="eventDate" placeholder="e.g. 14 March 2027, or Spring 2027">
+        </div>
+      </div>
+
+      <div class="aef-field">
+        <label for="aefLocation">Location <span class="aef-optional">(city/country, if in person)</span></label>
+        <input type="text" id="aefLocation" name="location" placeholder="e.g. London, UK">
+      </div>
+
+      <p class="aef-section-label">A little more</p>
+
+      <div class="aef-field">
+        <label for="aefMessage">What would you like this session to achieve? <span class="aef-required">*</span></label>
+        <textarea id="aefMessage" name="message" required placeholder="Tell me about your audience, the goal of the session, and anything else that would help me prepare the right proposal."></textarea>
+        <p class="aef-hint">The more context you give, the more tailored my response can be.</p>
+      </div>
+
+      <div class="aef-field">
+        <label for="aefSource">How did you hear about me? <span class="aef-optional">(optional)</span></label>
+        <input type="text" id="aefSource" name="source" placeholder="e.g. LinkedIn, referral, a previous talk">
+      </div>
+
+      <button type="submit" class="aef-submit">Send Enquiry</button>
+      <p class="aef-footnote">I read every enquiry personally and typically reply within 2&ndash;3 working days.</p>
+
+    </form>
+
+    <div class="aef-success" id="aefSuccess">
+      <div class="aef-success-mark">&#10003;</div>
+      <h3>Thank you.</h3>
+      <p>Your enquiry has been sent. I'll be in touch within 2&ndash;3 working days with availability and options suited to your event.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    const chips = document.querySelectorAll('.aef-chip');
+    chips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        const checkbox = chip.querySelector('input');
+        checkbox.checked = !checkbox.checked;
+        chip.classList.toggle('aef-checked', checkbox.checked);
+      });
+    });
+
+    const form = document.getElementById('aefForm');
+    const success = document.getElementById('aefSuccess');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const audienceChecked = document.querySelectorAll('input[name="audience"]:checked').length > 0;
+      if (!audienceChecked) {
+        alert('Please select at least one audience type.');
+        return;
+      }
+      // In production, this connects to the site's form handler (Elementor Forms / WPForms) and email notification.
+      form.classList.add('aef-hide');
+      success.classList.add('aef-show');
+    });
+  })();
+</script>
