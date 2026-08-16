@@ -1,6 +1,5 @@
-import type { NextConfig } from "next";
-
-const config: NextConfig = {
+/** @type {import('next').NextConfig} */
+const config = {
   // Next.js 16 re-injects an "agent rules" block into CLAUDE.md on every `next dev` run.
   // CLAUDE.md is this project's own root context file (see CLAUDE.md itself, PROMISE.md,
   // README.md), a pre-existing convention this feature would otherwise collide with — disabled.
