@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
-import { sendNotificationEmail } from "@/lib/sendpulse";
+import { addToAddressBook } from "@/lib/sendpulse";
 import { isRateLimited, getClientIp } from "@/lib/rateLimit";
 import { isValidEmail, isNonEmptyString, honeypotTripped } from "@/lib/validate";
 
 // Backend for content/speaking-enquiry-form.html, per content/forms/speaking-enquiry-build-spec.md.
-// Notifies speaking@alwaysenoughmethod.com — that mailbox does not exist yet, see docs/BUILD_LOG.md.
+// Routes through a SendPulse mailing list + Automation, same reasoning as
+// src/app/api/general-enquiry/route.ts — see that file's comment for why. Requires
+// SENDPULSE_SPEAKING_ENQUIRY_LIST_ID — see .env.example — and its own Automation in SendPulse's
+// dashboard notifying speaking@alwaysenoughmethod.com.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
   if (isRateLimited(ip)) {
@@ -49,30 +52,33 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please fill in every required field with a valid email." }, { status: 400 });
   }
 
-  const rows: [string, unknown][] = [
-    ["Name", name],
-    ["Organisation", organisation],
-    ["Email", email],
-    ["Phone", phone],
-    ["Audience", audienceList.join(", ")],
-    ["Format", format],
-    ["Delivery", delivery],
-    ["Audience size", audienceSize],
-    ["Event date", eventDate],
-    ["Location", location],
-    ["Message", message],
-    ["Source", source],
-  ];
-  const html = rows
-    .filter(([, value]) => isNonEmptyString(value))
-    .map(([label, value]) => `<p><strong>${label}:</strong> ${value}</p>`)
-    .join("");
+  const asString = (value: unknown): string => (typeof value === "string" ? value : "");
+
+  const addressBookId = process.env.SENDPULSE_SPEAKING_ENQUIRY_LIST_ID;
+  if (!addressBookId) {
+    return NextResponse.json(
+      { error: "Enquiries are not connected yet. Please email speaking@alwaysenoughmethod.com directly." },
+      { status: 503 },
+    );
+  }
 
   try {
-    await sendNotificationEmail({
-      to: "speaking@alwaysenoughmethod.com",
-      subject: `Speaking enquiry from ${name}`,
-      html,
+    await addToAddressBook({
+      addressBookId,
+      email,
+      variables: {
+        name,
+        organisation: asString(organisation),
+        phone: asString(phone),
+        audience: audienceList.join(", "),
+        format,
+        delivery,
+        audienceSize: asString(audienceSize),
+        eventDate: asString(eventDate),
+        location: asString(location),
+        message,
+        source: asString(source),
+      },
     });
     return NextResponse.json({ ok: true });
   } catch {
