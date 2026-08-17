@@ -95,11 +95,15 @@ export default function SpeakingPage() {
             </h1>
             <Prose blocks={opening} className="max-w-xl text-lg text-pearl/90" />
           </div>
-          {/* Same treatment as the Home and Reset heroes: a dedicated, fixed-aspect box for
-              the photo, separate from the text column, so the two can never overlap at any
-              viewport width. Native file is 3120×1200, mostly empty background either side of
-              Vaida; object-right crops in to just her. See src/app/page.tsx for the matching
-              pattern. */}
+          {/* Updated 2026-08-17: Vaida's final photo, 3120×1200, Forest Green background
+              pre-matched to the section. Same exact pattern as the Home hero above (and Reset):
+              a dedicated aspect-[4/5] box within this grid column, not a full-section background
+              — that distinction matters, a true full-bleed-behind-the-text treatment is the
+              pattern this session already found and fixed a real bug in (heading text landing on
+              Vaida's face at mobile/tablet/laptop widths), so it deliberately isn't used here.
+              object-right matches this photo's composition (Vaida in a narrow right-hand strip);
+              the pre-matched green background means the crop edge is invisible against the
+              section regardless. */}
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
             <Image
               src="/photos/vaida-speaking-hero.jpg"
@@ -107,7 +111,10 @@ export default function SpeakingPage() {
               fill
               priority
               quality={100}
-              sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
+              // See src/app/page.tsx for why this is 100vw rather than the box's own width —
+              // object-cover needs enough resolution to cover the box's height, not just its
+              // width, when cropping a wide source into a tall box, or it stretches and blurs.
+              sizes="100vw"
               className="object-cover object-right"
             />
           </div>

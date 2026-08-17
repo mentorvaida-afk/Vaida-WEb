@@ -76,7 +76,10 @@ export default function TheResetPage() {
               fill
               priority
               quality={100}
-              sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
+              // See src/app/page.tsx for why this is 100vw rather than the box's own width —
+              // object-cover needs enough resolution to cover the box's height, not just its
+              // width, when cropping a wide source into a tall box, or it stretches and blurs.
+              sizes="100vw"
               className="object-cover object-right"
             />
           </div>

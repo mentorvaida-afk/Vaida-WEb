@@ -62,7 +62,7 @@ export default function AboutPage() {
             priority
             quality={100}
             sizes="(min-width: 1024px) 440px, (min-width: 768px) 45vw, 90vw"
-            className="h-auto w-full rounded-sm"
+            className="h-auto w-full"
           />
         </div>
       </section>
@@ -82,8 +82,8 @@ export default function AboutPage() {
           <Image
             src="/photos/vaida-about-credentials.jpg"
             alt="Vaida V. Stone, credentials and professional background"
-            width={1363}
-            height={1792}
+            width={1467}
+            height={1880}
             quality={100}
             sizes="(min-width: 1024px) 440px, (min-width: 768px) 45vw, 90vw"
             className="h-auto w-full rounded-sm md:order-2"

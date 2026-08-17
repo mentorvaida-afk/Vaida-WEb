@@ -51,7 +51,11 @@ export default function HomePage() {
               fill
               priority
               quality={100}
-              sizes="(min-width: 1024px) 500px, (min-width: 768px) 45vw, 90vw"
+              // The box is a tall aspect-[4/5] crop of a wide 3120×1200 source (object-cover) —
+              // sizes must account for the resolution needed to cover the box's *height*, not
+              // just its width, or the browser fetches a variant too short and stretches it up,
+              // reading as blur. 100vw forces the largest reasonable source variant every time.
+              sizes="100vw"
               className="object-cover object-right"
             />
           </div>
