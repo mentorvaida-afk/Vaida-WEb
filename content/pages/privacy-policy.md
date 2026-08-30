@@ -17,7 +17,7 @@ processors, since those details depend on the exact tool setup once built.
 
 **Privacy Policy**
 
-Last updated: [insert date on publish]
+Last updated: 29 August 2026
 
 This policy explains what personal information Always ENOUGH™ (Vaida V.-Stone, operating as
 alwaysenoughmethod.com) collects, why, and how it's used. If you have any questions, you can
