@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
-import { addToAddressBook } from "@/lib/sendpulse";
+import { addSubscriberToGroup } from "@/lib/mailerlite";
+import { sendSpeakingNotification } from "@/lib/smtp";
 import { isRateLimited, getClientIp } from "@/lib/rateLimit";
 import { isValidEmail, isNonEmptyString, honeypotTripped } from "@/lib/validate";
 
 // Backend for content/speaking-enquiry-form.html, per content/forms/speaking-enquiry-build-spec.md.
-// Routes through a SendPulse mailing list + Automation, same reasoning as
-// src/app/api/general-enquiry/route.ts — see that file's comment for why. Requires
-// SENDPULSE_SPEAKING_ENQUIRY_LIST_ID — see .env.example — and its own Automation in SendPulse's
-// dashboard notifying speaking@alwaysenoughmethod.com.
+// Two things happen on a valid submission: the enquiry is added to MailerLite's Speaking
+// Enquiries group (MAILERLITE_SPEAKING_ENQUIRY_GROUP_ID, for record-keeping), and a notification
+// email is sent directly through speaking@alwaysenoughmethod.com's own Hostinger SMTP login
+// (src/lib/smtp.ts) — MailerLite's automations can only email the subscriber who triggered them,
+// not a fixed staff address, so it can't handle the notification itself. See docs/BUILD_LOG.md.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
   if (isRateLimited(ip)) {
@@ -54,19 +56,38 @@ export async function POST(request: Request) {
 
   const asString = (value: unknown): string => (typeof value === "string" ? value : "");
 
-  const addressBookId = process.env.SENDPULSE_SPEAKING_ENQUIRY_LIST_ID;
-  if (!addressBookId) {
+  const groupId = process.env.MAILERLITE_SPEAKING_ENQUIRY_GROUP_ID;
+  if (!groupId) {
     return NextResponse.json(
       { error: "Enquiries are not connected yet. Please email speaking@alwaysenoughmethod.com directly." },
       { status: 503 },
     );
   }
 
+  const rows: [string, unknown][] = [
+    ["Name", name],
+    ["Organisation", organisation],
+    ["Email", email],
+    ["Phone", phone],
+    ["Audience", audienceList.join(", ")],
+    ["Format", format],
+    ["Delivery", delivery],
+    ["Audience size", audienceSize],
+    ["Event date", eventDate],
+    ["Location", location],
+    ["Message", message],
+    ["Source", source],
+  ];
+  const html = rows
+    .filter(([, value]) => isNonEmptyString(value))
+    .map(([label, value]) => `<p><strong>${label}:</strong> ${value}</p>`)
+    .join("");
+
   try {
-    await addToAddressBook({
-      addressBookId,
+    await addSubscriberToGroup({
+      groupId,
       email,
-      variables: {
+      fields: {
         name,
         organisation: asString(organisation),
         phone: asString(phone),
@@ -80,6 +101,7 @@ export async function POST(request: Request) {
         source: asString(source),
       },
     });
+    await sendSpeakingNotification({ subject: `Speaking enquiry from ${name}`, html });
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

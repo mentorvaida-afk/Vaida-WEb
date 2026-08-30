@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
-import { addToAddressBook } from "@/lib/sendpulse";
+import { addSubscriberToGroup } from "@/lib/mailerlite";
 import { isRateLimited, getClientIp } from "@/lib/rateLimit";
 import { isValidEmail, honeypotTripped } from "@/lib/validate";
 
 // Backend for content/power-of-enough-notify-form.html, per
 // content/forms/power-of-enough-notify-build-spec.md. Deliberately no name field, no spreadsheet
-// backup, single-purpose list only, per that spec's own reasoning. Requires a
-// SENDPULSE_POWER_OF_ENOUGH_LIST_ID env var — see .env.example.
+// backup, single-purpose list only, per that spec's own reasoning. No staff notification either,
+// this is pure list-building for the eventual book launch. Requires a
+// MAILERLITE_POWER_OF_ENOUGH_GROUP_ID env var — see .env.example.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
   if (isRateLimited(ip)) {
@@ -28,8 +29,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please provide a valid email." }, { status: 400 });
   }
 
-  const addressBookId = process.env.SENDPULSE_POWER_OF_ENOUGH_LIST_ID;
-  if (!addressBookId) {
+  const groupId = process.env.MAILERLITE_POWER_OF_ENOUGH_GROUP_ID;
+  if (!groupId) {
     return NextResponse.json(
       { error: "This isn't connected yet. Please email hello@alwaysenoughmethod.com directly." },
       { status: 503 },
@@ -37,7 +38,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    await addToAddressBook({ addressBookId, email });
+    await addSubscriberToGroup({ groupId, email });
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
