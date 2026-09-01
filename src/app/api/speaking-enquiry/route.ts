@@ -5,11 +5,14 @@ import { isRateLimited, getClientIp } from "@/lib/rateLimit";
 import { isValidEmail, isNonEmptyString, honeypotTripped } from "@/lib/validate";
 
 // Backend for content/speaking-enquiry-form.html, per content/forms/speaking-enquiry-build-spec.md.
-// Two things happen on a valid submission: the enquiry is added to MailerLite's Speaking
-// Enquiries group (MAILERLITE_SPEAKING_ENQUIRY_GROUP_ID, for record-keeping), and a notification
+// Three things happen on a valid submission: the enquiry is added to MailerLite's Speaking
+// Enquiries group (MAILERLITE_SPEAKING_ENQUIRY_GROUP_ID, for record-keeping), a notification
 // email is sent directly through speaking@alwaysenoughmethod.com's own Hostinger SMTP login
 // (src/lib/smtp.ts) — MailerLite's automations can only email the subscriber who triggered them,
-// not a fixed staff address, so it can't handle the notification itself. See docs/BUILD_LOG.md.
+// not a fixed staff address, so it can't handle the notification itself — and a backup row is
+// logged to Vaida's Speaking Enquiries Google Sheet via a Google Apps Script Web App
+// (SPEAKING_SHEET_WEBHOOK_URL, see docs/BUILD_LOG.md for the script and deployment steps). See
+// docs/BUILD_LOG.md.
 export async function POST(request: Request) {
   const ip = getClientIp(request.headers);
   if (isRateLimited(ip)) {
@@ -102,6 +105,29 @@ export async function POST(request: Request) {
       },
     });
     await sendSpeakingNotification({ subject: `Speaking enquiry from ${name}`, html });
+
+    // Best-effort backup log only — MailerLite and the email above are the real notification
+    // path, already sent by this point, so a Sheets failure shouldn't make a real visitor think
+    // their enquiry didn't go through when it already has.
+    const sheetWebhookUrl = process.env.SPEAKING_SHEET_WEBHOOK_URL;
+    if (sheetWebhookUrl) {
+      try {
+        await fetch(sheetWebhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            organisation: asString(organisation),
+            eventDate: asString(eventDate),
+            message,
+          }),
+        });
+      } catch {
+        // Swallowed deliberately, see comment above.
+      }
+    }
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(

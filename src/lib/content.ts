@@ -56,7 +56,11 @@ export function getBlogPosts(): BlogPost[] {
     const title = chunk.match(/\n###\s+(.+)/)?.[1]?.trim() ?? seoTitle;
     const afterHeading = chunk.split(/\n###\s+.+\n/)[1] ?? "";
 
-    const ctaLine = afterHeading.trim().split(/\n\s*\n/).pop() ?? "";
+    // Every post ends with a trailing "---" divider before the next "## Blog Post N" heading
+    // (or "## Decisions locked" for the last one) — strip it first, or it becomes the last
+    // block instead of the real closing-links line, and closingLinks silently comes back empty.
+    const ctaSource = afterHeading.replace(/\n\s*---\s*$/, "").trim();
+    const ctaLine = ctaSource.split(/\n\s*\n/).pop() ?? "";
     const closingLinks: { label: string; href: string }[] = [...ctaLine.matchAll(/\[([^\]]+)\]/g)]
       .map((m) => m[1])
       .filter((label): label is string => label !== undefined && label in CTA_HREFS)
