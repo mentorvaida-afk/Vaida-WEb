@@ -1,7 +1,7 @@
 ---
 title: "Privacy Policy"
 slug: "/privacy-policy"
-source: "Privacy Policy Page, Draft Copy (Google Doc), fetched 2026-08-13. Section 4 updated 2026-08-15 to reflect the actual Next.js/SendPulse build, correcting an earlier note written while the WordPress-vs-Next.js platform decision was still open."
+source: "Privacy Policy Page, Draft Copy (Google Doc), fetched 2026-08-13. Section 4 updated 2026-08-15 to reflect the actual Next.js build, correcting an earlier note written while the WordPress-vs-Next.js platform decision was still open. Sections 1, 3, 4 and 5 updated 2026-09-21 to name MailerLite as the email service provider, add newsletter consent wording and describe cookies accurately."
 status: "DRAFT ONLY. Explicitly flagged by Vaida's own prior review as needing UK solicitor or policy-service review (e.g. Rocket Lawyer, Termly) before publishing, particularly data retention and third-party processor sections. Do not treat as ready to ship even after Vaida reads it herself, per the source document's own instruction."
 ---
 
@@ -17,7 +17,7 @@ processors, since those details depend on the exact tool setup once built.
 
 **Privacy Policy**
 
-Last updated: 29 August 2026
+Last updated: 21 September 2026
 
 This policy explains what personal information Always ENOUGH™ (Vaida V.-Stone, operating as
 alwaysenoughmethod.com) collects, why, and how it's used. If you have any questions, you can
@@ -43,6 +43,8 @@ Information submitted through this site is used to:
 - Notify you when The Power Of Enough is published, if you've asked to be notified
 - Occasionally send relevant updates, articles, or offers by email, if you've opted in to this
 
+Consent to receive newsletters is separate from receiving the workbook, and it is optional. You can withdraw it at any time using the unsubscribe link in every email.
+
 Your information is never sold to third parties.
 
 ## Section 4: How Your Information Is Stored
@@ -51,17 +53,20 @@ Form submissions are stored securely and may be processed using the following th
 
 - Next.js server functions, the website's own form-handling code, which passes submissions directly to the tools listed below. No third-party form plugin is used.
 - Google Sheets, for internal record-keeping of enquiries
-- SendPulse, for managing email communications you've opted into
+- MailerLite, the email service provider, for managing email communications you've opted into
 - Calendly, for scheduling Clarity Calls
+
+MailerLite processes names and email addresses to deliver the workbook and, where you have ticked the optional box, to send you newsletters.
 
 Your information is kept only for as long as necessary to fulfil the purpose it was collected
 for, or as required by law.
 
 ## Section 5: Cookies
 
-This site may use cookies to understand how visitors use it and to improve your experience. You
-can control or disable cookies through your browser settings. This section should be expanded
-once the specific analytics/tracking tools used on the live site are confirmed.
+This site uses Vercel Analytics to understand how visitors use it. Vercel Analytics does not use
+cookies. The MailerLite signup form on the VERTA DAUGIAU™ workbook page loads a script from
+MailerLite, which may set its own cookies. If you open the booking popup, Calendly may also set
+its own cookies. You can control or disable cookies through your browser settings.
 
 ## Section 6: Your Rights
 
