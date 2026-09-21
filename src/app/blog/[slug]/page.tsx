@@ -69,7 +69,14 @@ export default async function BlogPostPage({
         <Prose blocks={post.bodyBlocks} className="text-lg text-ink" />
         <div className="mt-12 flex flex-wrap gap-6 border-t border-line pt-8 text-sm font-medium">
           {post.closingLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-forest underline underline-offset-4">
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-forest underline underline-offset-4"
+              {...(/^https?:\/\//.test(link.href)
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+            >
               {link.label}
             </Link>
           ))}

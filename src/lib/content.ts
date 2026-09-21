@@ -32,11 +32,14 @@ export type BlogPost = {
   closingLinks: { label: string; href: string }[];
 };
 
-// Every closing CTA phrase used across the two launch posts, mapped to its real route. Add an
-// entry here if a future post's closing line uses a phrase not yet in this list.
+// Every closing CTA phrase used across the posts, mapped to its real route. Add an entry here if
+// a future post's closing line uses a phrase not yet in this list. "Book a Clarity Call" points
+// at the same Calendly link as BookingCallout and the homepage hero.
 const CTA_HREFS: Record<string, string> = {
   "Explore The Method →": "/the-method",
   "Download the free workbook →": "/blog",
+  "Download the free Always Enough Workbook →": "/blog",
+  "Book a Clarity Call →": "https://calendly.com/vaidastone",
   "Explore The Reset →": "/the-reset",
   "Learn about Speaking for financial services teams →": "/speaking",
 };

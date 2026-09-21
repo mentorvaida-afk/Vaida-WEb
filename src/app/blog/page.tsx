@@ -35,7 +35,8 @@ export default function BlogIndexPage() {
   );
   const resourceBlocks = blocks.filter((b) => b.includes("[Download free"));
   const resources = resourceBlocks.map(parseResource);
-  const posts = getBlogPosts();
+  // Posts are appended to blog-resources.md in publication order, so reversing gives newest first.
+  const posts = getBlogPosts().reverse();
 
   return (
     <main>
