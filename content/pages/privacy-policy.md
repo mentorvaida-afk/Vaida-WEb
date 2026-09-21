@@ -63,8 +63,8 @@ for, or as required by law.
 
 ## Section 5: Cookies
 
-This site uses Vercel Analytics to understand how visitors use it. Vercel Analytics does not use
-cookies. The MailerLite signup form on the VERTA DAUGIAU™ workbook page loads a script from
+This site does not currently use analytics cookies. The MailerLite signup form on the VERTA
+DAUGIAU™ workbook page loads a script from
 MailerLite, which may set its own cookies. If you open the booking popup, Calendly may also set
 its own cookies. You can control or disable cookies through your browser settings.
 
