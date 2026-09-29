@@ -51,7 +51,7 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      <section className="px-6 py-20">
+      <section id="free-resources" className="px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <h2 className="font-display mb-8 text-2xl text-forest">Free resources</h2>
           <div className="grid gap-6 md:grid-cols-2">

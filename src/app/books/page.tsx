@@ -89,7 +89,7 @@ export default function BooksPage() {
         </div>
       </section>
 
-      <section className="bg-forest px-6 py-24 text-pearl">
+      <section id="power-of-enough" className="bg-forest px-6 py-24 text-pearl">
         <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
           <Image
             src="/photos/vaida-books-power-of-enough.jpg"

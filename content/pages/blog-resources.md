@@ -23,6 +23,7 @@ More free resources are added here regularly, worth checking back.
 
 Latest articles on money, confidence, and navigating change.
 
+- Why the Financial Literacy Gap Doesn't Close With Age, It Follows You
 - Modesty Is Not the Same as Smallness
 - Why Confidence Fails Before Money Does
 - You Can Be Great With Everyone Else's Money and Still Struggle With Your Own
@@ -219,6 +220,56 @@ I teach it wherever I speak, including in Lithuanian, my first language, and I r
 Were you ever taught that modesty meant shrinking? I would love to hear your story. You are welcome to write to me at hello@alwaysenoughmethod.com.
 
 [Book a Clarity Call →] [Download the free Always Enough Workbook →]
+
+---
+
+## Blog Post 5 — Full Copy
+
+**SEO Title**: Why the Financial Literacy Gap Doesn't Close With Age, It Follows You
+**Meta Description**: Global data proves the financial confidence gap between men and women doesn't shrink with age. It widens. Here's what I believe we can do about it, and where I'm putting my belief next.
+**URL slug**: `/blog/financial-literacy-gap-follows-you`
+
+### Why the Financial Literacy Gap Doesn't Close With Age, It Follows You
+
+A year ago, I stood in front of a room and made a case I still believe in completely. I was pitching for funding to build an online financial literacy platform for women. Two minutes to explain why it mattered, then a panel deciding whether it was worth backing.
+
+I didn't win.
+
+But the belief behind that pitch didn't go anywhere. If anything, it got louder.
+
+**The teacher no one names**
+
+Here is what I believe, plainly, without hedging: women are the first teachers of money. Not in a classroom, in real life. Through motherhood. A daughter watches how her mother holds a purse, flinches at a bill, or talks about what the family can and cannot afford, long before anyone teaches her what a pension is.
+
+We pass on our relationship with money the same way we pass on language, mostly without meaning to, and mostly without anyone ever pointing out that we are doing it at all.
+
+**What the numbers actually say**
+
+I wish this were only a feeling. It isn't. It is measured, repeatedly, by people with no reason to flatter either of us.
+
+The S&P Global FinLit Survey, one of the largest financial literacy studies ever conducted, found a gap between men and women in most countries on earth. Worldwide, 35% of men are considered financially literate, against 30% of women. Not just in places without access to education. In the UK too.
+
+And here in Britain, the gap is not gentle. Research published by Aberdeen in March 2026 found that only 18% of UK women rate their own financial literacy as "very good," compared with 41% of men. A separate study of 5,000 households by the University of Bristol's Personal Finance Research Centre found only 35% of women feel confident making financial decisions, against 49% of men.
+
+Now here is the part that matters most for every woman reading this in her forties and beyond. Research from The Richmond Project found this gap does not close with age. At 18 to 24, the gap in financial literacy between men and women is 10 percentage points. By 45 to 54, it has more than doubled, to 22 points.
+
+Nobody tells you that. You are expected to have "sorted it out" by now. The data says otherwise, and it is not your fault.
+
+**I didn't win the pitch. I didn't stop.**
+
+So when I stood in that room a year ago, I wasn't asking for money for myself. I was asking for the resources to close a gap I could already see clearly, in the numbers and in every woman who has ever sat across from me feeling like she should already know this.
+
+The panel said no. I understand why: funding decisions are hard, and mine was one pitch among many good ones.
+
+But I have never believed that a closed door means a closed conversation. So I kept writing. My second book, The Power Of Enough, picks up exactly where that pitch left off, not why we don't have enough, but why so many capable women never quite feel it. Alongside it, I am developing a set of financial education cards for families, designed to make this conversation something you can actually have at your own kitchen table, with your own children, without needing a finance degree to start it.
+
+**Where this leaves you**
+
+If you are reading this and recognising yourself, in the numbers, in the mother who never quite talked about money, in the version of you that still flinches slightly at your own bank statement, I want you to hear this clearly. It is not a personal failing. It is a gap that was handed to most of us, quietly, and it is entirely possible to hand something different on.
+
+That is what I am building next.
+
+[Join the waiting list for The Power Of Enough →] [Download the free workbook →]
 
 ---
 
